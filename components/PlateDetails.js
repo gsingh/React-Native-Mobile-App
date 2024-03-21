@@ -5,7 +5,7 @@ import { SafeAreaView, View, Text, TextInput, TouchableOpacity, Alert, ScrollVie
 import { DataTable, Divider } from 'react-native-paper';
 import useValidate from "./useValidate.js";
 
-function PlateDetails({navigation, route}){
+const  PlateDetails=({navigation, route})=>{
     const {plate} = route.params;
     const [plateArray, setPlateArray] = useState([]);
   //  console.log(props);
@@ -19,10 +19,13 @@ function PlateDetails({navigation, route}){
 
     function handlePlateDetailsClick(plt){
         setPlateArray([... plateArray, plt]);
-        Alert.alert(`Plate loaded! No of plates loaded ${plateArray.length} `);
+      //  Alert.alert(`Plate loaded! No of plates loaded ${plateArray.length} `);
         ToastAndroid.showWithGravity(`Plate loaded! No of plates loaded ${plateArray.length} `, ToastAndroid.LONG, ToastAndroid.CENTER);
     }
-
+    function handlePlateArrayClick(pltArray){
+        Alert.alert(`Plate loaded! No of plates loaded ${pltArray.length} `);
+    navigation.navigate("AddPlates", {loaded: pltArray});
+    }
 
     return (
                <SafeAreaView style={styles.container}>
@@ -95,6 +98,12 @@ function PlateDetails({navigation, route}){
                         <Text style={styles.buttonText}> Add Plate </Text>
                     </View>
                 </TouchableOpacity>
+ <TouchableOpacity
+                   onPress={() => handlePlateArrayClick(plateArray)}>
+                   <View style={styles.button}>
+                       <Text style={styles.buttonText}> View Plates </Text>
+                   </View>
+               </TouchableOpacity>
        </View>
     </ScrollView>
 </SafeAreaView>

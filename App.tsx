@@ -7,6 +7,7 @@ import WelcomeScreen from './components/WelcomeScreen.js';
 import HomeScreen from './components/HomeScreen.js';
 import Plate from './components/Plate.js';
 import PlateDetails from "./components/PlateDetails.js";
+import AddPlates from "./components/AddPlates.js";
 
 const Stack = createNativeStackNavigator();
 
@@ -60,6 +61,16 @@ const App = () => {
             headerShown: true,
           }}
         />
+         <Stack.Screen
+                  name="AddPlates"
+                  component={ AddPlates }
+
+                  options={{
+                    headerTitle: "Loaded Plates",
+                    headerShown: true,
+                  }}
+                />
+
 
       </Stack.Navigator>
     </NavigationContainer>

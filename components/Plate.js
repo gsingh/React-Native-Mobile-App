@@ -10,7 +10,7 @@ import {
 } from "@firebase/firestore";
 import { db } from '../config.js';
 
-export default function Plate({navigation}){
+export default function({navigation}){
 //const {setPlateNo}=props;
 
 const [toast, setToast]=useState([]);
