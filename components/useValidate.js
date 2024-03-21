@@ -10,18 +10,20 @@ export default function useValidate(plate){
           ToastAndroid.showWithGravity(`${plate.plate_no} cannot be loaded, as plate next job is ${plate.next_job}`, ToastAndroid.SHORT, ToastAndroid.TOP);
            setDisabled(true);
             Alert.alert(`The value of disabled is ${disabled}: from validate()`);
-            return;
-        }
-if (plate.Party==="Direct" && plate.Status==="NCO"){
+
+        } else if (plate.Party==="Direct" && plate.Status==="NCO"){
     ToastAndroid.showWithGravity(`${plate.plate_no} cannot be loaded, NCO plate cannot be loaded for ${plate.Party} customer`, ToastAndroid.SHORT, ToastAndroid.TOP);
      setDisabled(true);
-     return;
-}
-if (plate.Party==="Direct" && (plate.order_status).includes("X")){
+
+} else if (plate.Party==="Direct" && (plate.order_status).includes("X")){
     ToastAndroid.showWithGravity(`${plate.plate_no} cannot be loaded, NCO plate cannot be loaded for ${plate.Party} customer`, ToastAndroid.SHORT, ToastAndroid.TOP);
      setDisabled(true);
-     return;
-}
+
+} else{
+       setDisabled(false);
+       ToastAndroid.showWithGravity("Plate can be loaded !!", ToastAndroid.LONG, ToastAndroid.CENTER);
+
+       }
 
     }
     return {disabled, validate};
