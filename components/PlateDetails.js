@@ -9,7 +9,7 @@ const  PlateDetails=({navigation, route})=>{
     const {plate} = route.params;
     const [plateArray, setPlateArray] = useState([]);
   //  console.log(props);
-    ToastAndroid.showWithGravity(plate.Party, ToastAndroid.SHORT, ToastAndroid.TOP);
+//    ToastAndroid.showWithGravity(plate.Party, ToastAndroid.SHORT, ToastAndroid.TOP);
   //  let disable;
     const {disabled, validate}=useValidate(plate);
     useEffect(()=>{
@@ -20,17 +20,17 @@ const  PlateDetails=({navigation, route})=>{
     function handlePlateDetailsClick(plt){
         setPlateArray([... plateArray, plt]);
       //  Alert.alert(`Plate loaded! No of plates loaded ${plateArray.length} `);
-        ToastAndroid.showWithGravity(`Plate loaded! No of plates loaded ${plateArray.length} `, ToastAndroid.LONG, ToastAndroid.CENTER);
+        ToastAndroid.showWithGravity(`Plate loaded! No of plates loaded ${plateArray.length} `, ToastAndroid.SHORT, ToastAndroid.CENTER);
     }
     function handlePlateArrayClick(pltArray){
-        Alert.alert(`Plate loaded! No of plates loaded ${pltArray.length} `);
+    //    Alert.alert(`Plate loaded! No of plates loaded ${pltArray.length} `);
     navigation.navigate("AddPlates", {loaded: pltArray});
     }
 
     return (
                <SafeAreaView style={styles.container}>
                <ScrollView>
-                <View style={[styles.segment, {flex: 1}]}>
+
 
 <Divider theme={{ colors: { primary: 'green' } }} bold="true" />
     <DataTable style={styles.container}>
@@ -92,6 +92,7 @@ const  PlateDetails=({navigation, route})=>{
 
    	</DataTable>
 <Divider theme={{ colors: { primary: 'green' } }} bold="true" />
+<View style={{flex: 1, flexDirection: "row", flexWrap: "wrap", alignItems: "flex-start"}} >
    	<TouchableOpacity disabled={disabled}
                     onPress={() => handlePlateDetailsClick(plate)}>
                     <View style={styles.button}>
@@ -104,7 +105,8 @@ const  PlateDetails=({navigation, route})=>{
                        <Text style={styles.buttonText}> View Plates </Text>
                    </View>
                </TouchableOpacity>
-       </View>
+               </View>
+
     </ScrollView>
 </SafeAreaView>
 

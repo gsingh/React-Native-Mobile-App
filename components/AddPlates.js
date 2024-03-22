@@ -1,18 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import { StyleSheet } from 'react-native';
 import { SafeAreaView, View, Text, TextInput, TouchableOpacity, Alert, ScrollView, ToastAndroid } from 'react-native';
-import { DataTable, Divider } from 'react-native-paper';
+import { DataTable, Divider, Checkbox } from 'react-native-paper';
 
 export default function AddPlates({navigation, route}){
     const {loaded}= route.params;
-     Alert.alert(`Plate loaded! No of plates loaded ${loaded.length} (from AddPlates)`);
+    const [checked, setChecked] = useState(false);
+  //   Alert.alert(`Plate loaded! No of plates loaded ${loaded.length} (from AddPlates)`);
 
     return (
                 <SafeAreaView style={styles.container}>
                 <ScrollView>
                  <View style={[styles.segment, {flex: 1}]}>
 
- <Divider theme={{ colors: { primary: 'green' } }} bold="true" />
+
      <DataTable style={styles.container}>
      <Divider theme={{ colors: { primary: 'green' } }} bold="true" />
       <DataTable.Header>
@@ -23,21 +24,26 @@ export default function AddPlates({navigation, route}){
              <DataTable.Title>NextJob</DataTable.Title>
              <DataTable.Title>OrderNo</DataTable.Title>
            </DataTable.Header>
-           <Divider theme={{ colors: { primary: 'green' } }} bold="true" />
-     {loaded.map(plate=>
+
+     {loaded.map((plate, key)=>
+
      	 	<DataTable.Row>
+     	 	 <Divider theme={{ colors: { primary: 'green' } }} bold="true" />
+     	{/*}	<DataTable.cell><Checkbox status={checked ? 'checked' : 'unchecked'} onPress={() => {setChecked(!checked) }} /> </DataTable.cell> */}
      		<DataTable.Cell>{plate.plate_no}</DataTable.Cell>
      		<DataTable.Cell>{plate.Consignee}</DataTable.Cell>
        		<DataTable.Cell>{plate.Dimensions}</DataTable.Cell>
       		<DataTable.Cell>{plate.heat_no}</DataTable.Cell>
      		<DataTable.Cell>{plate.next_job}</DataTable.Cell>
      		<DataTable.Cell>{plate.order_no}</DataTable.Cell>
+     		<Divider theme={{ colors: { primary: 'green' } }} bold="true" />
      	</DataTable.Row>
+
      	)}
 
     	</DataTable>
- <Divider theme={{ colors: { primary: 'green' } }} bold="true" />
-    	<TouchableOpacity disabled={disabled}
+
+    	<TouchableOpacity
                      onPress={() => Alert.alert("Hello!! from addPlates")}>
                      <View style={styles.button}>
                          <Text style={styles.buttonText}> Submit LR </Text>

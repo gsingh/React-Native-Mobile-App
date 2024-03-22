@@ -21,7 +21,7 @@ const [display, setDisplay ] = useState(true);
  //Alert.alert(`plate entered ${plate}`);
 
  const handlePlateClick = async (plt) => {
-      Alert.alert(`plate number is ${plt} (first)`);
+  //    Alert.alert(`plate number is ${plt} (first)`);
           //   setPlateNo({});
              setLoading(true);
             const docRef = collection(db, "plate");
@@ -38,8 +38,8 @@ const [display, setDisplay ] = useState(true);
            docData.forEach((doc) => {
              console.log(doc);
 
-             Alert.alert(doc.data().Consignee);
-              ToastAndroid.showWithGravity(doc.data().Consignee, ToastAndroid.SHORT, ToastAndroid.TOP);
+      //       Alert.alert(doc.data().Consignee);
+     //         ToastAndroid.showWithGravity(doc.data().Consignee, ToastAndroid.SHORT, ToastAndroid.TOP);
             //  setPlate(docData.body);
              setPlate(doc.data().plate_no);
               navigation.navigate("PlateDetails", {plate: doc.data()});
@@ -47,7 +47,7 @@ const [display, setDisplay ] = useState(true);
                 setPlate(doc.data());
                  setLoading(false);
                  setDisplay(true);
-                 Alert.alert(`Plate No is ${doc.data().plate_no}`);
+          //       Alert.alert(`Plate No is ${doc.data().plate_no}`);
                });
 
 
@@ -56,8 +56,8 @@ const [display, setDisplay ] = useState(true);
      const [plate, setPlate] = useState('');
 return (<>
            <SafeAreaView style={styles.container}>
-           <ScrollView>
-            <View style={[styles.segment, {flex: 1}]}>
+
+
   <Text style={styles.text}> Plate No </Text>
                <TextInput
                    style={styles.textInput}
@@ -65,15 +65,10 @@ return (<>
                    placeholderTextColor="black"
                   value={plate}
                    onChangeText={text => {
-                           if(text.length==0) {
-                           Alert.alert("Plate No cannot be empty")
+                         setPlate(text);
                            }
-                           else{
-                        setPlate(text);
-                           }
-
                    }
-               }
+
                 />
                <TouchableOpacity
                    onPress={() => handlePlateClick(plate)}>
@@ -81,8 +76,8 @@ return (<>
                        <Text style={styles.buttonText}> Submit </Text>
                    </View>
                </TouchableOpacity>
-                   </View>
-               </ScrollView>
+
+
              </SafeAreaView>
        </> );
      }
@@ -90,7 +85,8 @@ const styles = StyleSheet.create({
     container: {
          flex: 1,
          justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        backgroundColor: "paleturquoise"
     },
     text: {
 
@@ -99,21 +95,25 @@ const styles = StyleSheet.create({
          alignItems: "flex-end"
     },
     textInput: {
-            height: 35,
+             alignItems: "center",
+                           justifyContent: "center",
+                           backgroundColor: "white",
+                           borderRadius: 24,
             width: 250,
             borderWidth: 5,
             borderRadius: 20,
             borderColor: "orange",
             paddingLeft: 20,
             marginTop: 5,
-            color: "blue"
+            color: "blue",
+            fontSize: 20
 
         },
          button: {
                 marginTop: 25,
-                marginLeft: 180,
-                width: 120,
-                height: 25,
+
+                               width: 120,
+                height: 35,
                 alignItems: "center",
                 justifyContent: "center",
                 backgroundColor: "#191970",
