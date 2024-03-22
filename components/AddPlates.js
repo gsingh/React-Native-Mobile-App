@@ -14,76 +14,36 @@ export default function AddPlates({navigation, route}){
 
  <Divider theme={{ colors: { primary: 'green' } }} bold="true" />
      <DataTable style={styles.container}>
+     <Divider theme={{ colors: { primary: 'green' } }} bold="true" />
+      <DataTable.Header>
+             <DataTable.Title>PlateNo</DataTable.Title>
+             <DataTable.Title>Consignee</DataTable.Title>
+             <DataTable.Title>Dimensions</DataTable.Title>
+             <DataTable.Title>HeatNo</DataTable.Title>
+             <DataTable.Title>NextJob</DataTable.Title>
+             <DataTable.Title>OrderNo</DataTable.Title>
+           </DataTable.Header>
+           <Divider theme={{ colors: { primary: 'green' } }} bold="true" />
+     {loaded.map(plate=>
      	 	<DataTable.Row>
-     		<DataTable.Cell>Plate No:</DataTable.Cell>
      		<DataTable.Cell>{plate.plate_no}</DataTable.Cell>
-     	</DataTable.Row>
- <Divider theme={{ colors: { primary: 'green' } }} bold="true" />
-     	<DataTable.Row>
-     		<DataTable.Cell>Consignee:</DataTable.Cell>
      		<DataTable.Cell>{plate.Consignee}</DataTable.Cell>
-     	</DataTable.Row>
- <Divider theme={{ colors: { primary: 'green' } }} bold="true" />
-     	<DataTable.Row>
-     		<DataTable.Cell>Dimensions:</DataTable.Cell>
-     		<DataTable.Cell>{plate.Dimensions}</DataTable.Cell>
- <Divider theme={{ colors: { primary: 'green' } }} bold="true" />
-     	</DataTable.Row>
- <Divider theme={{ colors: { primary: 'green' } }} bold="true" />
-     	<DataTable.Row>
-     		<DataTable.Cell>HT:</DataTable.Cell>
-     		<DataTable.Cell>{plate.HT}</DataTable.Cell>
-     	</DataTable.Row>
- <Divider theme={{ colors: { primary: 'green' } }} bold="true" />
- <DataTable.Row>
-     		<DataTable.Cell>Party:</DataTable.Cell>
-     		<DataTable.Cell>{plate.Party}</DataTable.Cell>
-     	</DataTable.Row>
- <Divider theme={{ colors: { primary: 'green' } }} bold="true" />
- <DataTable.Row>
-     		<DataTable.Cell>Quality:</DataTable.Cell>
-     		<DataTable.Cell>{plate.Quality}</DataTable.Cell>
-     	</DataTable.Row>
- <Divider theme={{ colors: { primary: 'green' } }} bold="true" />
- <DataTable.Row>
-     		<DataTable.Cell>Status:</DataTable.Cell>
-     		<DataTable.Cell>{plate.Status}</DataTable.Cell>
-     	</DataTable.Row>
- <Divider theme={{ colors: { primary: 'green' } }} bold="true" />
- <DataTable.Row>
-     		<DataTable.Cell>Despatch Mode:</DataTable.Cell>
-     		<DataTable.Cell>{plate.despatch_mode}</DataTable.Cell>
-     	</DataTable.Row>
- <Divider theme={{ colors: { primary: 'green' } }} bold="true" />
- <DataTable.Row>
-     		<DataTable.Cell>Heat No:</DataTable.Cell>
-     		<DataTable.Cell>{plate.heat_no}</DataTable.Cell>
-     	</DataTable.Row>
- <Divider theme={{ colors: { primary: 'green' } }} bold="true" />
- <DataTable.Row>
-     		<DataTable.Cell>Next Job:</DataTable.Cell>
+       		<DataTable.Cell>{plate.Dimensions}</DataTable.Cell>
+      		<DataTable.Cell>{plate.heat_no}</DataTable.Cell>
      		<DataTable.Cell>{plate.next_job}</DataTable.Cell>
-     	</DataTable.Row>
- <Divider theme={{ colors: { primary: 'green' } }} bold="true" />
- <DataTable.Row>
-     		<DataTable.Cell>Order No:</DataTable.Cell>
      		<DataTable.Cell>{plate.order_no}</DataTable.Cell>
      	</DataTable.Row>
+     	)}
 
     	</DataTable>
  <Divider theme={{ colors: { primary: 'green' } }} bold="true" />
     	<TouchableOpacity disabled={disabled}
-                     onPress={() => handlePlateDetailsClick(plate)}>
+                     onPress={() => Alert.alert("Hello!! from addPlates")}>
                      <View style={styles.button}>
-                         <Text style={styles.buttonText}> Add Plate </Text>
+                         <Text style={styles.buttonText}> Submit LR </Text>
                      </View>
                  </TouchableOpacity>
-  <TouchableOpacity
-                    onPress={() => handlePlateArrayClick(plateArray)}>
-                    <View style={styles.button}>
-                        <Text style={styles.buttonText}> View Plates </Text>
-                    </View>
-                </TouchableOpacity>
+
         </View>
      </ScrollView>
  </SafeAreaView>
