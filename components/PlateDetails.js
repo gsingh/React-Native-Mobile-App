@@ -4,12 +4,14 @@ import { StyleSheet } from 'react-native';
 import { SafeAreaView, View, Text, TextInput, TouchableOpacity, Alert, ScrollView, ToastAndroid } from 'react-native';
 import { DataTable, Divider } from 'react-native-paper';
 import useValidate from "./useValidate.js";
+import Toast from "react-native-toast-android";
 
 const  PlateDetails=({navigation, route})=>{
     const {plate} = route.params;
     const [plateArray, setPlateArray] = useState([]);
   //  console.log(props);
-    ToastAndroid.showWithGravity(plate.Party, ToastAndroid.SHORT, ToastAndroid.TOP);
+  //  ToastAndroid.showWithGravity(plate.Party, ToastAndroid.SHORT, ToastAndroid.TOP);
+
   //  let disable;
     const {disabled, validate}=useValidate(plate);
     useEffect(()=>{
@@ -21,6 +23,14 @@ const  PlateDetails=({navigation, route})=>{
         setPlateArray([... plateArray, plt]);
       //  Alert.alert(`Plate loaded! No of plates loaded ${plateArray.length} `);
         ToastAndroid.showWithGravity(`Plate loaded! No of plates loaded ${plateArray.length} `, ToastAndroid.LONG, ToastAndroid.CENTER);
+         Toast.show({
+         type : "success",
+         text1: "Plate loaded !",
+         text2: `Numbers : ${plateArray.length}',
+         autoHide: false,
+         position: "top" ,
+         bottomOffset: 100
+          });
     }
     function handlePlateArrayClick(pltArray){
         Alert.alert(`Plate loaded! No of plates loaded ${pltArray.length} `);
@@ -31,7 +41,7 @@ const  PlateDetails=({navigation, route})=>{
                <SafeAreaView style={styles.container}>
                <ScrollView>
                 <View style={[styles.segment, {flex: 1}]}>
-
+                <Toast />
 <Divider theme={{ colors: { primary: 'green' } }} bold="true" />
     <DataTable style={styles.container}>
     	 	<DataTable.Row>
