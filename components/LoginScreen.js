@@ -222,7 +222,9 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         paddingLeft: 40,
-        marginBottom: 110
+        marginBottom: 110,
+         alignItems: "center",
+         backgroundColor: "lightskyblue"
     },
     text: {
         color: "purple",
@@ -238,14 +240,19 @@ const styles = StyleSheet.create({
         marginTop: 30
     },
     textInput: {
-        height: 50,
-        width: 500,
-        borderWidth: 1,
-        borderRadius: 20,
-        borderColor: "purple",
-        paddingLeft: 20,
-        marginTop: 10
-    },
+                 alignItems: "center",
+                 justifyContent: "center",
+                 backgroundColor: "white",
+                 borderRadius: 24,
+                width: 250,
+                borderWidth: 5,
+                borderRadius: 20,
+                borderColor: "darkorange",
+                paddingLeft: 20,
+                marginTop: 5,
+                color: "blue"
+
+            },
     button: {
         marginTop: 50,
         marginLeft: 180,
