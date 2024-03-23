@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 import { SafeAreaView, View, Text, TextInput, TouchableOpacity, Alert, ScrollView, ToastAndroid } from 'react-native';
 import { DataTable, Divider } from 'react-native-paper';
 import useValidate from "./useValidate.js";
-import Toast from "react-native-toast-android";
+import Toast from "react-native-toast-message";
 
 const  PlateDetails=({navigation, route})=>{
     const {plate} = route.params;
@@ -22,18 +22,19 @@ const  PlateDetails=({navigation, route})=>{
     function handlePlateDetailsClick(plt){
         setPlateArray([... plateArray, plt]);
       //  Alert.alert(`Plate loaded! No of plates loaded ${plateArray.length} `);
-        ToastAndroid.showWithGravity(`Plate loaded! No of plates loaded ${plateArray.length} `, ToastAndroid.LONG, ToastAndroid.CENTER);
+     //   ToastAndroid.showWithGravity(`Plate loaded! No of plates loaded ${plateArray.length}`, ToastAndroid.LONG, ToastAndroid.CENTER);
          Toast.show({
          type : "success",
          text1: "Plate loaded !",
-         text2: `Numbers : ${plateArray.length}',
+         text2: `Numbers : ${plateArray.length+1}`,
          autoHide: false,
+          visibilityTime: 2500,
          position: "top" ,
-         bottomOffset: 100
+         bottomOffset: 150
           });
     }
     function handlePlateArrayClick(pltArray){
-        Alert.alert(`Plate loaded! No of plates loaded ${pltArray.length} `);
+
     navigation.navigate("AddPlates", {loaded: pltArray});
     }
 
@@ -41,8 +42,7 @@ const  PlateDetails=({navigation, route})=>{
                <SafeAreaView style={styles.container}>
                <ScrollView>
                 <View style={[styles.segment, {flex: 1}]}>
-                <Toast />
-<Divider theme={{ colors: { primary: 'green' } }} bold="true" />
+                <Divider theme={{ colors: { primary: 'green' } }} bold="true" />
     <DataTable style={styles.container}>
     	 	<DataTable.Row>
     		<DataTable.Cell>Plate No:</DataTable.Cell>
@@ -94,6 +94,10 @@ const  PlateDetails=({navigation, route})=>{
     		<DataTable.Cell>Next Job:</DataTable.Cell>
     		<DataTable.Cell>{plate.next_job}</DataTable.Cell>
     	</DataTable.Row>
+<DataTable.Row>
+    		<DataTable.Cell>Order Status:</DataTable.Cell>
+    		<DataTable.Cell>{plate.order_status}</DataTable.Cell>
+</DataTable.Row>
 <Divider theme={{ colors: { primary: 'green' } }} bold="true" />
 <DataTable.Row>
     		<DataTable.Cell>Order No:</DataTable.Cell>
@@ -126,21 +130,23 @@ const  PlateDetails=({navigation, route})=>{
 
 
     const styles = StyleSheet.create({
-    container: {
-    	padding: 15,
+    segment: {
+        backgroundColor: "paleturquoise"
+
+
+
     },
     tableHeader: {
     	backgroundColor: '#DCDCDC',
     },
   button: {
-                marginTop: 25,
-                marginLeft: 180,
-                width: 120,
-                height: 25,
-                alignItems: "center",
-                justifyContent: "center",
-                backgroundColor: "#191970",
-                borderRadius: 24
+               marginTop: 25,
+               width: 120,
+               height: 35,
+               alignItems: "center",
+               justifyContent: "flex-right",
+               backgroundColor: "#191970",
+               borderRadius: 24
             },
     });
 

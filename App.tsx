@@ -8,11 +8,12 @@ import HomeScreen from './components/HomeScreen.js';
 import Plate from './components/Plate.js';
 import PlateDetails from "./components/PlateDetails.js";
 import AddPlates from "./components/AddPlates.js";
+import Toast from "react-native-toast-message";
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
-  return (
+  return ( <>
     <NavigationContainer>
       <Stack.Navigator>
       <Stack.Screen
@@ -74,6 +75,8 @@ const App = () => {
 
       </Stack.Navigator>
     </NavigationContainer>
+    <Toast />
+    </>
   );
 };
 

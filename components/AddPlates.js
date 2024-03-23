@@ -25,7 +25,7 @@ export default function AddPlates({navigation, route}){
              <DataTable.Title>OrderNo</DataTable.Title>
            </DataTable.Header>
 
-     {loaded.map((plate, key)=>
+     {loaded.map((plate)=>
 
      	 	<DataTable.Row>
      	 	 <Divider theme={{ colors: { primary: 'green' } }} bold="true" />
